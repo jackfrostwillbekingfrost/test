@@ -16,6 +16,8 @@ app.post('/text', function(req, res) {
 console.log(req.body);
 data['text'] = req.body.text;
 res.json({ text: 'Successfuly set the message!' });
+res.send(data);
+res.end();
 });
 
 const port = process.env.PORT || 3000;
