@@ -1,13 +1,22 @@
-var http = require('http');
+const express = require('express');
+const app = express();
+const bodyParser = require('body-parser');
 
-var server = http.createServer(function(request, response) {
+let data = {};
 
-    response.writeHead(200, {"Content-Type": "text/plain"});
-    console.log(JSON.stringify(request));
-    response.end(JSON.stringify(request) + "Hello World!");
+// app.use(bodyParser.json()); // for parsing JSON
+app.use(bodyParser.urlencoded({extended: true}));
+
+app.get('/text', function(req, res) {
+res.send(data);
+res.end();
 });
 
-var port = process.env.PORT || 1337;
-server.listen(port);
+app.post('/text', function(req, res) {
+console.log(req.body);
+data['text'] = req.body.text;
+res.json({ text: 'Successfuly set the message!' });
+});
 
-console.log("Server running at http://localhost:%d", port);
+const port = process.env.PORT || 3000;
+app.listen(port);
