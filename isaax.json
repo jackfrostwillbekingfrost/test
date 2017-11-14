@@ -1,0 +1,13 @@
+{
+"name": "test",
+"version": "",
+"description": "My Javascript app",
+"main": "index.js",
+"author": "",
+"license": "",
+"language":"javascript",
+"scripts": {
+"start": "node index.js"
+},
+"dependency": null
+}
